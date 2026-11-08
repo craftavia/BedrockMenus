@@ -1,0 +1,22 @@
+name: BedrockMenus
+version: '${version}'
+main: net.craftavia.bedrockmenus.BedrockMenusPlugin
+api-version: '1.21.4'
+description: Shows chest menus of any plugin to Bedrock (Geyser/Floodgate) players as native forms with item pictures.
+authors: [Craftavia]
+website: https://craftavia.net
+folia-supported: false
+dependencies:
+  server:
+    packetevents:
+      load: BEFORE
+      required: true
+      join-classpath: true
+    floodgate:
+      load: BEFORE
+      required: false
+      join-classpath: true
+permissions:
+  bedrockmenus.admin:
+    description: Use /bedrockmenus reload, status and the debug answer command.
+    default: op

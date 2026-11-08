@@ -1,0 +1,91 @@
+# ┌──────────────────────────────────────────────────────────────┐
+# │  BedrockMenus by Craftavia                                   │
+# │  https://github.com/craftavia/BedrockMenus · craftavia.net   │
+# └──────────────────────────────────────────────────────────────┘
+#
+# Chest menus of other plugins are shown to Bedrock (Geyser + Floodgate) players as native forms.
+# Java players see no difference. Apply changes with /bedrockmenus reload.
+# Form and chat texts are in messages_<language>.properties (players see their client language).
+
+# Language used when a player's client language has no messages file.
+# Bundled: en, tr. Add more by copying messages_en.properties to messages_<code>.properties.
+default-language: en
+
+menu:
+  enabled: true
+
+  # Menus opened by these plugins are never converted (plugin names, case-insensitive).
+  # Add plugins that already show their own Bedrock forms, and every plugin whose menus need
+  # players to PUT items in (sell boxes, trade windows, backpacks, auction listing screens...):
+  # a form can only click, it cannot place items.
+  excluded-plugins: []
+
+  # If not empty, ONLY menus of these plugins are converted and excluded-plugins is ignored.
+  only-plugins: []
+
+  # Menus whose title matches one of these regular expressions stay normal chests
+  # (matched against the plain title, case-insensitive). Example:
+  #   excluded-titles:
+  #     - "^Sell Items$"
+  #     - "Backpack"
+  excluded-titles: []
+
+  # When an item's lore mentions right-click or shift-click, tapping it first opens a detail screen
+  # with the full lore and one button per click type. false = every tap is a left click.
+  detail-screen: true
+
+  # Words in an item's lore (plain text, case-insensitive) that reveal the click types it supports.
+  # English and Turkish by default; add the words your menus use.
+  click-words:
+    right: ["right", "sağ", "sag tık", "sag tik"]
+    shift: ["shift"]
+    left: ["left", "sol ", "sol-"]
+
+  # When the menu's plugin does not cancel a click, give the item to the player like vanilla would.
+  # Only matters for menus that let players take items out.
+  item-taking: true
+
+  # A button shows the item name and one lore line. A line matching this regular expression
+  # (for example a price) is shown instead of the first line. Empty = first non-empty line.
+  # Example: "(price|cost|\\$)"
+  important-line: ""
+
+  # Show the item's picture on each button. Normal items use the Bedrock client's own textures.
+  button-images: true
+
+  # Image URL for player heads. {texture} = skin texture id or player name.
+  # The Bedrock client downloads this image itself; the server never connects to it.
+  # Empty = heads have no picture.
+  head-image-url: "https://mc-heads.net/head/{texture}/64"
+
+# When a Bedrock player switches servers through a proxy, a form from the previous server may still
+# be on screen and can no longer be answered. Close it one second after joining.
+close-stale-forms: true
+
+# Bedrock players cannot click text in chat. When a chat message has clickable parts that run one of
+# these commands, the same buttons are also shown to Bedrock players as a form. A tap runs the command
+# as the player (with the player's own permissions), exactly like a click on Java.
+chat-buttons:
+  enabled: true
+  # Regular expressions for the full command (with the leading /), case-insensitive.
+  commands:
+    - "^/([a-z0-9_.-]+:)?(tpaccept|tpyes|tpdeny|tpno)( \\S+)?$"
+    - "^/([a-z0-9_.-]+:)?(party|p|friend|friends|f|duel)( \\S+)? (accept|deny|decline)( \\S+){0,2}$"
+  # Form title by the first word of the command: <command word>: <title type>.
+  # The title text is chat-title.<type> in the messages files; unknown types use chat-title.default.
+  titles:
+    tpaccept: teleport
+    tpyes: teleport
+    tpdeny: teleport
+    tpno: teleport
+    party: party
+    p: party
+    friend: friend
+    friends: friend
+    f: friend
+    duel: duel
+
+debug:
+  # Java players with these names are treated as Bedrock players: forms are printed to their chat and
+  # answered with /bedrockmenus answer <id> <button|close>. For testing only, keep it empty.
+  fake-bedrock-players: []
