@@ -7,6 +7,8 @@ catches those menus and shows a Bedrock form instead: one button per item, with 
 line. A tap is passed back to the original menu as a normal click, so the plugin that opened the menu keeps
 doing all the work. Java players see no difference.
 
+**Download:** [Hangar](https://hangar.papermc.io/mrpunky/BedrockMenus) · [GitHub Releases](https://github.com/craftavia/BedrockMenus/releases)
+
 ## Features
 
 - **Automatic** – works with menus from any plugin that uses a virtual chest inventory (shops, warps, kits,
@@ -132,6 +134,8 @@ Made by the Craftavia team, used on play.craftavia.net, https://craftavia.net
 The jar is written to `build/libs/`.
 
 ## Türkçe
+
+**İndir:** [Hangar](https://hangar.papermc.io/mrpunky/BedrockMenus) · [GitHub Releases](https://github.com/craftavia/BedrockMenus/releases)
 
 BedrockMenus, Geyser ile giren Bedrock (mobil, konsol, Windows) oyunculara diğer eklentilerin sandık
 menülerini **Bedrock'un kendi formu** olarak gösterir. Her eşya resmiyle birlikte bir düğme olur; düğmeye
